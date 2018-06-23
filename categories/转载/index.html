@@ -14,13 +14,10 @@
 <meta name="author" content="攻城的喵" />
 
 
-    
-    
-
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="喵的博客">
-<meta property="og:url" content="https://dnnb.github.io/index.html">
+<meta property="og:url" content="https://dnnb.github.io/categories/转载/index.html">
 <meta property="og:site_name" content="喵的博客">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -50,13 +47,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>喵的博客</title>
+<title>Category: 转载 | 喵的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,11 +60,11 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
+        isHome: false,
         isPost: false,
         isArchive: false,
         isTag: false,
-        isCategory: false,
+        isCategory: true,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
         search: true
@@ -251,208 +246,58 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-java虚拟机内存" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2018/06/23/java虚拟机内存/" class="article-date">
-      <time datetime="2018-06-22T16:00:00.000Z" itemprop="datePublished">2018-06-23</time>
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2018/06/23/java虚拟机内存/" class="archive-article-date">
+      <time datetime="2018-06-22T16:00:00.000Z" itemprop="datePublished">06-23</time>
 </a>
 
 
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a>
+      <a class="archive-article-title" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-              <p>在讨论JVM内存区域分析之前，先来看一下Java程序具体执行的过程：</p>
-<p><img src="/2018/06/23/java虚拟机内存/1.png" alt="Java程序执行过程"></p>
-<blockquote>
-<p>Java 程序的执行过程：</p>
-<p>Java 源代码文件（.Java文件）-&gt; Java Compiler（Java编译器）-&gt;Java 字节码文件（.class文件）-&gt;类加载器（Class Loader）-&gt;Runtime Data Area（运行时数据）-&gt; Execution Engine（执行引擎）。 </p>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/转载/">转载</a>
     </div>
 
 
-      
+          
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a href="/2018/06/23/java虚拟机内存/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
-
-
   
-    <article id="post-python对象的真与假" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2018/06/21/python对象的真与假/" class="article-date">
-      <time datetime="2018-06-20T16:00:00.000Z" itemprop="datePublished">2018-06-21</time>
-</a>
-
-
-    </div>
+    </div></section>
   
-  <div class="article-inner">
+
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/21/python对象的真与假/">python对象的真与假</a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              Python最初是用int来做真假逻辑判断的。在Python 2.3版本开始引入bool类型（True与False）。bool类是int的子类，所以True和False也就相当于1和0。在python的条件判断语句中传入 False,0,'',(),[],{},None,set()时都为假，非None对象一般来说是真，但也可以是假。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/06/21/python对象的真与假/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-python之禅" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/11/python之禅/" class="article-date">
-      <time datetime="2018-06-10T16:00:00.000Z" itemprop="datePublished">2018-06-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/11/python之禅/">python之禅</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              在Python shell中输入import this就会显示Tim Peters的《The Zen of python》,读一读Python之禅,你就会知道Python为什么如此迷人！然后再查看一下this模块源码，一起来回忆一下加密与解密...的简单实现方式。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2018/06/11/python之禅/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
     <div class="outer">

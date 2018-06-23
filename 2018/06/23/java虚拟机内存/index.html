@@ -15,25 +15,20 @@
 
 
 
-<meta name="description" content="Python最初是用int来做真假逻辑判断的。在Python 2.3版本开始引入bool类型（True与False）。bool类是int的子类，所以True和False也就相当于1和0。在python的条件判断语句中传入 False,0,&apos;&apos;,(),[],{},None,set()时都为假，非None对象一般来说是真，但也可以是假。">
+<meta name="description" content="在讨论JVM内存区域分析之前，先来看一下Java程序具体执行的过程：   Java 程序的执行过程： Java 源代码文件（.Java文件）-&amp;gt; Java Compiler（Java编译器）-&amp;gt;Java 字节码文件（.class文件）-&amp;gt;类加载器（Class Loader）-&amp;gt;Runtime Data Area（运行时数据）-&amp;gt; Execution Engine（执行">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python对象的真与假">
-<meta property="og:url" content="https://dnnb.github.io/2018/06/21/python对象的真与假/index.html">
+<meta property="og:title" content="Java虚拟机内存">
+<meta property="og:url" content="https://dnnb.github.io/2018/06/23/java虚拟机内存/index.html">
 <meta property="og:site_name" content="喵的博客">
-<meta property="og:description" content="Python最初是用int来做真假逻辑判断的。在Python 2.3版本开始引入bool类型（True与False）。bool类是int的子类，所以True和False也就相当于1和0。在python的条件判断语句中传入 False,0,&apos;&apos;,(),[],{},None,set()时都为假，非None对象一般来说是真，但也可以是假。">
+<meta property="og:description" content="在讨论JVM内存区域分析之前，先来看一下Java程序具体执行的过程：   Java 程序的执行过程： Java 源代码文件（.Java文件）-&amp;gt; Java Compiler（Java编译器）-&amp;gt;Java 字节码文件（.class文件）-&amp;gt;类加载器（Class Loader）-&amp;gt;Runtime Data Area（运行时数据）-&amp;gt; Execution Engine（执行">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/1.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/2.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/3.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/4.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/5.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/6.png">
-<meta property="og:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/7.png">
-<meta property="og:updated_time" content="2018-06-23T08:39:22.568Z">
+<meta property="og:image" content="https://dnnb.github.io/2018/06/23/java虚拟机内存/1.png">
+<meta property="og:updated_time" content="2018-06-23T09:16:47.329Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python对象的真与假">
-<meta name="twitter:description" content="Python最初是用int来做真假逻辑判断的。在Python 2.3版本开始引入bool类型（True与False）。bool类是int的子类，所以True和False也就相当于1和0。在python的条件判断语句中传入 False,0,&apos;&apos;,(),[],{},None,set()时都为假，非None对象一般来说是真，但也可以是假。">
-<meta name="twitter:image" content="https://dnnb.github.io/2018/06/21/python对象的真与假/1.png">
+<meta name="twitter:title" content="Java虚拟机内存">
+<meta name="twitter:description" content="在讨论JVM内存区域分析之前，先来看一下Java程序具体执行的过程：   Java 程序的执行过程： Java 源代码文件（.Java文件）-&amp;gt; Java Compiler（Java编译器）-&amp;gt;Java 字节码文件（.class文件）-&amp;gt;类加载器（Class Loader）-&amp;gt;Runtime Data Area（运行时数据）-&amp;gt; Execution Engine（执行">
+<meta name="twitter:image" content="https://dnnb.github.io/2018/06/23/java虚拟机内存/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>python对象的真与假 | 喵的博客</title>
+<title>Java虚拟机内存 | 喵的博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -256,11 +251,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-python对象的真与假" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java虚拟机内存" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/06/21/python对象的真与假/" class="article-date">
-      <time datetime="2018-06-20T16:00:00.000Z" itemprop="datePublished">2018-06-21</time>
+      <a href="/2018/06/23/java虚拟机内存/" class="article-date">
+      <time datetime="2018-06-22T16:00:00.000Z" itemprop="datePublished">2018-06-23</time>
 </a>
 
 
@@ -275,7 +270,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python对象的真与假
+      Java虚拟机内存
     </h1>
   
 
@@ -284,11 +279,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a>
+    <a class="article-category-link" href="/categories/转载/">转载</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -296,89 +295,51 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="python中的真假值对照表"><a href="#python中的真假值对照表" class="headerlink" title="python中的真假值对照表"></a>python中的真假值对照表</h2><table>
-<thead>
-<tr>
-<th>类型</th>
-<th style="text-align:center">False</th>
-<th style="text-align:center">True</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>布尔</td>
-<td style="text-align:center">False</td>
-<td style="text-align:center">True</td>
-</tr>
-<tr>
-<td>数值</td>
-<td style="text-align:center">0,   0.0</td>
-<td style="text-align:center">非零的数值</td>
-</tr>
-<tr>
-<td>字符串</td>
-<td style="text-align:center">‘’(空字符串)</td>
-<td style="text-align:center">非空字符串</td>
-</tr>
-<tr>
-<td>容器</td>
-<td style="text-align:center">[],  (),  {},  set()</td>
-<td style="text-align:center">至少有一个元素的容器对象</td>
-</tr>
-<tr>
-<td>None</td>
-<td style="text-align:center">None和某些非None对象</td>
-<td style="text-align:center">大部分非None对象</td>
-</tr>
-</tbody>
-</table>
-<h2 id="非None对象的真假值判断"><a href="#非None对象的真假值判断" class="headerlink" title="非None对象的真假值判断"></a>非None对象的真假值判断</h2><h3 id="bool类介绍"><a href="#bool类介绍" class="headerlink" title="bool类介绍"></a>bool类介绍</h3><p>Python最初是用int来做真假逻辑判断的。在Python 2.3版本中开始引入bool类型（True与False）。</p>
-<p>bool类是int的子类，所以True和False也就相当于1和0。</p>
-<p>下面看一下bool类：</p>
-<pre><code>class bool(int):
-    &quot;&quot;&quot;
-    bool(x) -&gt; bool
-
-    Returns True when the argument x is true, False otherwise.
-    The builtins True and False are the only two instances of the class bool.
-    The class bool is a subclass of the class int, and cannot be subclassed.
-    &quot;&quot;&quot;
-</code></pre><blockquote>
-<p>注释翻译：当参数x为真时，返回为真，否则将返回False。真的和假的是类bool的两个实例。类bool是类int的子类，不能被子类化。</p>
+        <p>在讨论JVM内存区域分析之前，先来看一下Java程序具体执行的过程：</p>
+<p><img src="/2018/06/23/java虚拟机内存/1.png" alt="Java程序执行过程"></p>
+<blockquote>
+<p>Java 程序的执行过程：</p>
+<p>Java 源代码文件（.Java文件）-&gt; Java Compiler（Java编译器）-&gt;Java 字节码文件（.class文件）-&gt;类加载器（Class Loader）-&gt;Runtime Data Area（运行时数据）-&gt; Execution Engine（执行引擎）。 </p>
 </blockquote>
-<p>打印一下发现，确实是这样的！<br> <img src="/2018/06/21/python对象的真与假/1.png" alt=""></p>
-<h3 id="对象真假值分析"><a href="#对象真假值分析" class="headerlink" title="对象真假值分析"></a>对象真假值分析</h3><p>在做真假逻辑判断时，我们通过if 来判断这个对象的真假时，其实是通过bool()来进行判断的，也就是if a： 相当于if bool(a): ，而if bool(a): 其实是通过对象的<code>__bool__()</code>（python2 中是<code>__nonzero__()</code>）函数或者<code>__len__()</code>的返回值来决定的，下面来看一下<code>__bool__()</code>和<code>__nonzero__()</code>函数的官方文档介绍：</p>
-<ul>
-<li><code>object.__bool__(self)</code></li>
+<a id="more"></a>
+<p>我们今天就来分析一下Java程序执行过程的 Runtime Data Area（运行时数据）这一块。</p>
+<h3 id="那么运行时数据区包括哪几部分呢？"><a href="#那么运行时数据区包括哪几部分呢？" class="headerlink" title="那么运行时数据区包括哪几部分呢？"></a>那么运行时数据区包括哪几部分呢？</h3><ul>
+<li>程序计数器（Program Counter Register）</li>
+<li>Java虚拟机栈（VM Stack）</li>
+<li>本地方法栈（Native Method Stack）</li>
+<li>方法区（method area）</li>
+<li>堆（heap）</li>
 </ul>
+<h2 id="一、程序计数器"><a href="#一、程序计数器" class="headerlink" title="一、程序计数器"></a>一、程序计数器</h2><p>　　用来指示程序执行哪一条指令，这跟汇编语言的程序计数器的功能在逻辑上是一样的。JVM规范中规定，如果线程执行的是非native方法，则程序计数器中保存的是当前需要执行的指令地址，如果线程执行的是native方法，则程序计数器中的值undefined。</p>
+<p>　　每个线程都有自己独立的程序计数器。为什么呢？</p>
+<p>　　因为多线程下，一个CPU内核只会执行一条线程中的指令，因此为了使每个线程在线程切换之后能够恢复到切换之前的程序执行的位置，所以每个线程都有自己独立的程序计数器。</p>
+<h2 id="二、Java虚拟机栈"><a href="#二、Java虚拟机栈" class="headerlink" title="二、Java虚拟机栈"></a>二、Java虚拟机栈</h2><p>　　Java虚拟机栈中存放的是一个个栈帧，当程序执行一个方法时，就会创建一个栈帧并压入栈中，当方法执行完毕之后，便会将栈帧移除栈。</p>
+<p>　　我们所说的“栈”是指Java虚拟机栈，一个栈帧中包括：局部变量表、操作数栈、动态连接、方法返回地址、附加信息。</p>
+<h3 id="局部变量表"><a href="#局部变量表" class="headerlink" title="局部变量表"></a>局部变量表</h3><p>　　局部变量表主要是存储方法中的局部变量，包括方法中局部变量的信息和方法的参数。如：各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址），其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。</p>
+<p>　　局部变量表的大小在编译器就可以确定其大小了，因此在程序执行期间局部变量表的大小是不会改变的。</p>
 <blockquote>
-<p>Called to implement truth value testing and the built-in operation bool(); should return False or True. When this method is not defined, <code>__len__()</code> is called, if it is defined, and the object is considered true if its result is nonzero. If a class defines neither<code>__len__()</code> nor <code>__bool__()</code>, all its instances are considered true.</p>
-</blockquote>
+<p>在Java虚拟机规范中，对这个区域规定了两种异常状况：</p>
 <ul>
-<li><code>object.__nonzero__(self)</code></li>
+<li>如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；</li>
+<li>如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），如果扩展时无法申请到足够的内存，就会抛出OutOfMemoryError异常。</li>
 </ul>
-<blockquote>
-<p>Called to implement truth value testing and the built-in operation bool(); should return False or True, or their integer equivalents 0 or 1. When this method is not defined, <code>__len__()</code>is called, if it is defined, and the object is considered true if its result is nonzero. If a class defines neither <code>__len__()</code> nor <code>__nonzero__()</code>, all its instances are considered true.</p>
 </blockquote>
+<h3 id="操作数栈"><a href="#操作数栈" class="headerlink" title="操作数栈"></a>操作数栈</h3><p>　　虚拟机把操作数栈作为它的工作区，程序中的所有计算过程都是在借助于操作数栈来完成的，大多数指令都要从这里弹出数据，执行运算，然后把结果压回操作数栈。</p>
+<h3 id="动态连接"><a href="#动态连接" class="headerlink" title="动态连接"></a>动态连接</h3><p>　　每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用（指向运行时常量池：在方法执行的过程中有可能需要用到类中的常量），持有这个引用是为了支持方法调用过程中的动态连接。</p>
+<h3 id="方法返回地址"><a href="#方法返回地址" class="headerlink" title="方法返回地址"></a>方法返回地址</h3><p>　　当一个方法执行完毕之后，要返回之前调用它的地方，因此在栈帧中必须保存一个方法返回地址。</p>
+<h3 id="附加信息"><a href="#附加信息" class="headerlink" title="附加信息"></a>附加信息</h3><p>　　虚拟机规范允许具体的虚拟机实现增加一些规范里没有描述的信息到栈帧中，例如与高度相关的信息，这部分信息完全取决于具体的虚拟机实现。在实际开发中，一般会把动态连接，方法返回地址与其它附加信息全部归为一类，称为栈帧信息。</p>
+<h2 id="三、本地方法栈"><a href="#三、本地方法栈" class="headerlink" title="三、本地方法栈"></a>三、本地方法栈</h2><p>　　本地方法栈（Native Method Stack）与虚拟机栈所发挥的作用是非常相似的，它们之间的区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则为虚拟机使用到的Native方法服务。</p>
 <blockquote>
-<p>有道翻译：要求实现真值测试和内置的bool（）;应该返回False或True。当这个方法没有被定义时，如果它被定义了，len（）就会被调用，如果它的结果是非零的，那么这个对象就被认为是正确的。如果一个类既没有定义len（）也不定义bool（），那么它的所有实例都被认为是正确的。</p>
+<p>与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。</p>
 </blockquote>
-<p>写一个类重写<code>__bool__()</code>和<code>__len__()</code>试一下：</p>
-<p>先看一下正常的：</p>
-<p><img src="/2018/06/21/python对象的真与假/2.png" alt=""></p>
-<p>重写<code>__bool__()</code>返回False:</p>
-<p><img src="/2018/06/21/python对象的真与假/3.png" alt=""></p>
-<p>重写<code>__bool__()</code>返回True:</p>
-<p><img src="/2018/06/21/python对象的真与假/4.png" alt=""></p>
-<p>重写<code>__len__()</code>返回0:</p>
-<p><img src="/2018/06/21/python对象的真与假/5.png" alt=""></p>
-<p>重写<code>__len__()</code>返回大于0:</p>
-<p><img src="/2018/06/21/python对象的真与假/6.png" alt=""></p>
-<p>重写<code>__len__()</code>返回大于0，<code>__bool__()</code>返回False:</p>
-<p><img src="/2018/06/21/python对象的真与假/7.png" alt=""></p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><code>__len__()</code>函数对非None对象的真假判断起辅助作用，<code>__bool__()</code>函数起决定作用。</p>
-<p>最后再python官方文档对<code>object.__bool__</code>的介绍：</p>
-<p><a href="https://docs.python.org/3.5/reference/datamodel.html?highlight=__bool__#object.__bool__" target="_blank" rel="noopener">https://docs.python.org/3.5/reference/datamodel.html?highlight=<strong>bool</strong>#object.<strong>bool</strong></a></p>
+<h2 id="四、堆（heap）"><a href="#四、堆（heap）" class="headerlink" title="四、堆（heap）"></a>四、堆（heap）</h2><p>　　在C语言中，程序员可以通过malloc函数和free函数在堆上申请和释放空间。那么在Java中是怎么样的呢？Java中的堆是用来存储对象本身的以及数组（当然，数组引用是存放在Java栈中的），几乎所有的对象实例都在这里分配内存。在Java中，程序员基本不用去关心空间释放的问题，Java的垃圾回收机制会自动进行处理。</p>
+<p>　　另外，堆是被所有线程共享的，在JVM中只有一个堆。</p>
+<h2 id="五、方法区"><a href="#五、方法区" class="headerlink" title="五、方法区"></a>五、方法区</h2><p>　　方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、以及编译器编译后的代码等。</p>
+<p>　　运行时常量池（Runtime Constant Pool）是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池（Constant Pool Table），用于存放编译期生成的各种字面量和符号引用，这部分内容将在类加载后进入方法区的运行时常量池中存放。</p>
+<blockquote>
+<p>在JVM规范中，没有强制要求方法区必须实现垃圾回收。很多人习惯将方法区称为“永久代”，是因为HotSpot虚拟机以永久代来实现方法区，从而JVM的垃圾收集器可以像管理堆区一样管理这部分区域，从而不需要专门为这部分设计垃圾回收机制。不过自从JDK7之后，Hotspot虚拟机便将运行时常量池从永久代移除了。</p>
+</blockquote>
+<p>原文地址：<a href="https://www.jianshu.com/p/4f32f371215d" target="_blank" rel="noopener">https://www.jianshu.com/p/4f32f371215d</a></p>
 
       
     </div>
@@ -387,13 +348,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/06/21/python对象的真与假/">python对象的真与假</a></p>
+        <p><span>本文标题:</span><a href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">攻城的喵</a></p>
-        <p><span>发布时间:</span>2018-06-21</p>
+        <p><span>发布时间:</span>2018-06-23</p>
         <p><span>最后更新:</span>2018-06-23</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/06/21/python对象的真与假/" title="python对象的真与假">https://dnnb.github.io/2018/06/21/python对象的真与假/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://dnnb.github.io/2018/06/21/python对象的真与假/　　作者: 攻城的喵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/06/23/java虚拟机内存/" title="Java虚拟机内存">https://dnnb.github.io/2018/06/23/java虚拟机内存/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://dnnb.github.io/2018/06/23/java虚拟机内存/　　作者: 攻城的喵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -405,16 +366,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/06/23/java虚拟机内存/">
-                    Java虚拟机内存
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/11/python之禅/">
-                    python之禅
+                <a href="/2018/06/21/python对象的真与假/">
+                    python对象的真与假
                 </a>
             </div>
         
@@ -426,7 +381,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#python中的真假值对照表"><span class="toc-number">1.</span> <span class="toc-text">python中的真假值对照表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非None对象的真假值判断"><span class="toc-number">2.</span> <span class="toc-text">非None对象的真假值判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bool类介绍"><span class="toc-number">2.1.</span> <span class="toc-text">bool类介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象真假值分析"><span class="toc-number">2.2.</span> <span class="toc-text">对象真假值分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#那么运行时数据区包括哪几部分呢？"><span class="toc-number">1.</span> <span class="toc-text">那么运行时数据区包括哪几部分呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、程序计数器"><span class="toc-number"></span> <span class="toc-text">一、程序计数器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Java虚拟机栈"><span class="toc-number"></span> <span class="toc-text">二、Java虚拟机栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量表"><span class="toc-number">1.</span> <span class="toc-text">局部变量表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作数栈"><span class="toc-number">2.</span> <span class="toc-text">操作数栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态连接"><span class="toc-number">3.</span> <span class="toc-text">动态连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法返回地址"><span class="toc-number">4.</span> <span class="toc-text">方法返回地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附加信息"><span class="toc-number">5.</span> <span class="toc-text">附加信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、本地方法栈"><span class="toc-number"></span> <span class="toc-text">三、本地方法栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、堆（heap）"><span class="toc-number"></span> <span class="toc-text">四、堆（heap）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、方法区"><span class="toc-number"></span> <span class="toc-text">五、方法区</span></a>
         
     </div>
     <style>
@@ -462,7 +417,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"python对象的真与假　| 喵的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Java虚拟机内存　| 喵的博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -482,15 +437,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/06/23/java虚拟机内存/" title="上一篇: Java虚拟机内存">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/11/python之禅/" title="下一篇: python之禅">
+            <a href="/2018/06/21/python对象的真与假/" title="下一篇: python对象的真与假">
                 <i class="fa fa-angle-right"></i>
             </a>
         
