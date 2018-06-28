@@ -127,11 +127,6 @@
                             <div class="ribbon"></div>
                         </div>
                         
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
                         
                         <div class="icon-wrap icon-me hide" data-idx="3">
                             <div class="user"></div>
@@ -146,8 +141,6 @@
                     <ul class="tips-inner">
                         <li>菜单</li>
                         <li>标签</li>
-                        
-                        <li>友情链接</li>
                         
                         
                         <li>关于我</li>
@@ -187,22 +180,10 @@
                 
                 
                 
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
 
                 
                 
-                <section class="switch-part switch-part4">
+                <section class="switch-part switch-part3">
                 
                     <div id="js-aboutme">成一事者，矢志不渝之愚者；毁一事者，停滞不前之贤者。</div>
                 </section>
@@ -627,6 +608,12 @@ SELECT DAYOFMONTH(NOW()),DAYOFWEEK(NOW())
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/06/28/浏览器Timeline/">
+                    收藏一份浏览器发展时间轴
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2018/06/23/java虚拟机内存/">
@@ -698,7 +685,9 @@ SELECT DAYOFMONTH(NOW()),DAYOFWEEK(NOW())
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/06/28/浏览器Timeline/" title="上一篇: 收藏一份浏览器发展时间轴">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -710,7 +699,7 @@ SELECT DAYOFMONTH(NOW()),DAYOFWEEK(NOW())
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/SQL分类/">SQL介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/python对象的真与假/">python对象的真与假</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/11/python之禅/">python之禅</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/28/浏览器Timeline/">收藏一份浏览器发展时间轴</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/SQL分类/">SQL介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/python对象的真与假/">python对象的真与假</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/11/python之禅/">python之禅</a></li></ul>
 
 
 
@@ -788,6 +777,7 @@ SELECT DAYOFMONTH(NOW()),DAYOFWEEK(NOW())
         var oOpenInNew = {
              github: ".github-widget a", 
             
+             post: ".article-entry a[href], .copyright a[href]", 
             
             
             
@@ -795,7 +785,6 @@ SELECT DAYOFMONTH(NOW()),DAYOFWEEK(NOW())
             
             
             
-             friends: "#js-friends a", 
              socail: ".social a" 
         }
         for (var x in oOpenInNew) {

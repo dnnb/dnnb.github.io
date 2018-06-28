@@ -127,11 +127,6 @@
                             <div class="ribbon"></div>
                         </div>
                         
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
                         
                         <div class="icon-wrap icon-me hide" data-idx="3">
                             <div class="user"></div>
@@ -146,8 +141,6 @@
                     <ul class="tips-inner">
                         <li>菜单</li>
                         <li>标签</li>
-                        
-                        <li>友情链接</li>
                         
                         
                         <li>关于我</li>
@@ -187,22 +180,10 @@
                 
                 
                 
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
 
                 
                 
-                <section class="switch-part switch-part4">
+                <section class="switch-part switch-part3">
                 
                     <div id="js-aboutme">成一事者，矢志不渝之愚者；毁一事者，停滞不前之贤者。</div>
                 </section>
@@ -432,7 +413,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/SQL分类/">SQL介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/python对象的真与假/">python对象的真与假</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/11/python之禅/">python之禅</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/06/28/浏览器Timeline/">收藏一份浏览器发展时间轴</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/24/SQL分类/">SQL介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/23/java虚拟机内存/">Java虚拟机内存</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/21/python对象的真与假/">python对象的真与假</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/11/python之禅/">python之禅</a></li></ul>
 
 
 
@@ -510,6 +491,7 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
         var oOpenInNew = {
              github: ".github-widget a", 
             
+             post: ".article-entry a[href], .copyright a[href]", 
             
             
             
@@ -517,7 +499,6 @@ ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值�
             
             
             
-             friends: "#js-friends a", 
              socail: ".social a" 
         }
         for (var x in oOpenInNew) {
